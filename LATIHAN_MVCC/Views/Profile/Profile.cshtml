@@ -1,0 +1,69 @@
+﻿@model LATIHAN_MVCC.Models.ProfileViewModel // Sudah DIKOREKSI
+@{
+    ViewData["Title"] = "Profil Pengguna";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Opsional: Pastikan menggunakan layout AdminLTE
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@ViewData["Title"]</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center">
+                            <img class="profile-user-img img-fluid img-circle"
+                                 src="~/dist/img/user2-160x160.jpg"
+                                 alt="User profile picture">
+                        </div>
+                        <h3 class="profile-username text-center">@Model.FullName</h3>
+                        <p class="text-muted text-center">@Model.Username</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header p-2">
+                        <h3 class="card-title">Detail Informasi</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tr>
+                                <th style="width: 20%">Nama Lengkap:</th>
+                                <td>@Model.FullName</td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td>@Model.Email</td>
+                            </tr>
+                            <tr>
+                                <th>Nama Pengguna:</th>
+                                <td>@Model.Username</td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Bergabung:</th>
+                                <td>@Model.JoinDate.ToString("dd MMMM yyyy")</td>
+                            </tr>
+                        </table>
+
+                        <div class="mt-4">
+                            <a asp-action="Edit" class="btn btn-primary">
+                                <i class="fas fa-edit"></i> Edit Profil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

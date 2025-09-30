@@ -1,0 +1,66 @@
+﻿@model LATIHAN_MVCC.Models.ProfileViewModel // Sudah DIKOREKSI
+@{
+    ViewData["Title"] = "Edit Profil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@ViewData["Title"]</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Ubah Data Akun</h3>
+                    </div>
+
+                    <form asp-action="Edit" method="post">
+                        <div class="card-body">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <input type="hidden" asp-for="Id" />
+
+                            <div class="form-group">
+                                <label asp-for="FullName"></label>
+                                <input asp-for="FullName" class="form-control" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Email"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Username"></label>
+                                <input asp-for="Username" class="form-control" readonly />
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                            <a asp-action="Profile" class="btn btn-default float-right">Batal</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        // Diperlukan agar validasi berjalan di sisi klien (tanpa harus ke server)
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
